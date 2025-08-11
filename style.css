@@ -93,13 +93,16 @@
   --shadow-3: 0 8px 32px rgba(60,80,60,0.18);
 }
 
+/* Mobile-safe viewport and safe-area handling */
+html { height: -webkit-fill-available; }
 body {
   background-color: #f5f8e8;
   font-family: 'Comic Sans MS', 'Fredoka One', cursive;
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   align-items: stretch;
 }
@@ -115,6 +118,9 @@ body {
   grid-template-rows: 1fr;
   align-content: start;
   position: relative;
+  /* Prevent layout jump from mobile browser chrome */
+  height: 100dvh;
+  max-height: 100dvh;
 }
 
 /* Screen transitions (GPU-accelerated) */
@@ -138,7 +144,7 @@ body {
 /* Green top arc */
 .header.arc-bg {
   background: #708c5a;
-  height: 18vw;
+  height: 18svh; /* small viewport height for mobile UI chrome */
   min-height: 120px;
   max-height: 200px;
   border-bottom-left-radius: 60% 80px;
@@ -219,7 +225,7 @@ body {
   font-family: 'Fredoka One', 'Comic Sans MS', cursive;
   font-weight: bold;
   font-size: clamp(1rem, 3vw, 1.35rem);
-  padding: 3vw 0;
+  padding: clamp(12px, 3.2vw, 20px) 0;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -229,6 +235,7 @@ body {
   text-shadow: 0 2px 8px rgba(0,0,0,0.10);
   will-change: transform;
   touch-action: manipulation;
+  min-height: 48px; /* good touch target size */
 }
 .step-btn:hover {
   transform: translate3d(0, -2px, 0) scale(1.05);
@@ -246,8 +253,8 @@ body {
 .background {
   background-color: #f9f6ec;
   background-image: radial-gradient(circle at 20px 20px, rgba(0,0,0,0.05) 18%, transparent 18%);
-  background-size: 8vw 8vw;
-  padding: 6vw 3vw;
+  background-size: clamp(24px, 8vw, 64px) clamp(24px, 8vw, 64px);
+  padding: clamp(16px, 6vw, 40px) clamp(12px, 3vw, 24px);
 }
 
 /* Step buttons */
@@ -378,16 +385,19 @@ body {
     max-width: 99vw;
     font-size: 1rem;
   }
+  /* Reduce clutter from decorative elements on tiny screens */
+  .star { width: 22px; height: 22px; }
+  .flower { width: 36px; height: 36px; bottom: 12px; }
   .header.arc-bg {
     font-size: clamp(1.1rem, 7vw, 2.1rem);
-    height: 22vw;
+    height: 22svh;
     min-height: 80px;
     max-height: 120px;
   }
   .steps { gap: 3vw; margin: 4vw auto 0 auto; }
   .step-btn {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
-    padding: 4vw 0;
+    font-size: clamp(0.95rem, 4.4vw, 1.15rem);
+    padding: clamp(14px, 4.6vw, 22px) 0;
   }
   .equation-anim {
     font-size: clamp(1rem, 5vw, 1.7rem);
@@ -398,7 +408,7 @@ body {
 /* Narrow phones: single column for clarity */
 @media (max-width: 380px) {
   .steps { grid-template-columns: 1fr; }
-  .step-btn { padding: 5vw 0; }
+  .step-btn { padding: clamp(14px, 5.2vw, 24px) 0; }
 }
 
 /* Tablets */
