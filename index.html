@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Steps Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Question selection screen -->
+        <div id="questionSelectScreen" class="screen is-active">
+            <div class="header arc-bg">
+                <div class="star float-star" style="top: 20px; left: 30px;"></div>
+                <div class="star float-star" style="top: 50px; left: 60px;"></div>
+                <div class="star float-star" style="top: 20px; right: 30px;"></div>
+                <div class="star float-star" style="top: 50px; right: 60px;"></div>
+                <span class="equation-anim" style="width:100%;">Choose a Quadratic Equation</span>
+            </div>
+            <div class="background">
+                <div id="questionList" class="steps fade-in"></div>
+            </div>
+            <div class="flower pink left float-flower"></div>
+            <div class="flower purple float-flower"></div>
+            <div class="flower yellow right float-flower"></div>
+        </div>
+        <!-- Step-by-step game screen -->
+        <div id="gameScreen" class="screen">
+            <div class="header arc-bg">
+                <div class="star float-star" style="top: 20px; left: 30px;"></div>
+                <div class="star float-star" style="top: 50px; left: 60px;"></div>
+                <div class="star float-star" style="top: 20px; right: 30px;"></div>
+                <div class="star float-star" style="top: 50px; right: 60px;"></div>
+                <span id="equation" class="equation-anim"></span>
+            </div>
+            <div class="background">
+                <div class="steps options fade-in">
+                    <button class="step-btn" id="btn1"></button>
+                    <button class="step-btn" id="btn2"></button>
+                    <button class="step-btn" id="btn3"></button>
+                    <button class="step-btn" id="btn4"></button>
+                </div>
+                <p id="feedback"></p>
+            </div>
+            <div class="flower pink left float-flower"></div>
+            <div class="flower purple float-flower"></div>
+            <div class="flower yellow right float-flower"></div>
+        </div>
+        <!-- Modal for explanation -->
+        <div id="explanationModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Explanation</h2>
+                <div id="explanationText"></div>
+                <div id="correctOptionArea" style="margin: 18px 0;"></div>
+                <button id="tryAgainBtn" style="display:none; margin-top: 10px;">Try Again</button>
+            </div>
+        </div>
+        <!-- Modal for summary -->
+        <div id="summaryModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" id="closeSummary">&times;</span>
+                <h2>Quadratic Solution Summary</h2>
+                <div id="summaryText"></div>
+                <button id="closeSummaryBtn" class="ghost-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

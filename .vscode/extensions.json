@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "github.copilot",
+        "github.vscode-pull-request-github",
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cmake-tools",
+    ]
+}
