@@ -10,6 +10,8 @@
 </head>
 <body>
     <div class="container">
+        <!-- Global language toggle button -->
+        <button id="langToggleBtn" class="lang-btn" aria-label="Toggle language">हिंदी</button>
         <!-- Question selection screen -->
         <div id="questionSelectScreen" class="screen is-active">
             <div class="header arc-bg">
@@ -17,7 +19,7 @@
                 <div class="star float-star" style="top: 50px; left: 60px;"></div>
                 <div class="star float-star" style="top: 20px; right: 30px;"></div>
                 <div class="star float-star" style="top: 50px; right: 60px;"></div>
-                <span class="equation-anim" style="width:100%;">Choose a Quadratic Equation</span>
+                <span id="chooseLabel" class="equation-anim" style="width:100%;">Choose a Quadratic Equation</span>
             </div>
             <div class="background">
                 <div id="questionList" class="steps fade-in"></div>
@@ -36,6 +38,8 @@
                 <span id="equation" class="equation-anim"></span>
             </div>
             <div class="background">
+                <button id="skipAllBtn" class="ghost-btn skip-btn">Skip All</button>
+                <p id="prompt" class="prompt"></p>
                 <div class="steps options fade-in">
                     <button class="step-btn" id="btn1"></button>
                     <button class="step-btn" id="btn2"></button>
@@ -52,7 +56,7 @@
         <div id="explanationModal" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>
-                <h2>Explanation</h2>
+                <h2 id="explanationTitle">Explanation</h2>
                 <div id="explanationText"></div>
                 <div id="correctOptionArea" style="margin: 18px 0;"></div>
                 <button id="tryAgainBtn" style="display:none; margin-top: 10px;">Try Again</button>
@@ -62,7 +66,7 @@
         <div id="summaryModal" class="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" id="closeSummary">&times;</span>
-                <h2>Quadratic Solution Summary</h2>
+                <h2 id="summaryTitle">Quadratic Solution Summary</h2>
                 <div id="summaryText"></div>
                 <button id="closeSummaryBtn" class="ghost-btn">Close</button>
             </div>

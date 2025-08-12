@@ -254,7 +254,7 @@ body {
   background-color: #f9f6ec;
   background-image: radial-gradient(circle at 20px 20px, rgba(0,0,0,0.05) 18%, transparent 18%);
   background-size: clamp(24px, 8vw, 64px) clamp(24px, 8vw, 64px);
-  padding: clamp(16px, 6vw, 40px) clamp(12px, 3vw, 24px);
+  padding: clamp(20px, 7vw, 48px) clamp(16px, 4vw, 28px);
 }
 
 /* Step buttons */
@@ -264,7 +264,7 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 4vw, 28px);
   max-width: min(92vw, 520px);
-  margin: 6vw auto 0 auto;
+  margin: 5vw auto 0 auto;
 }
 .steps .step-btn {
   opacity: 0;
@@ -394,16 +394,49 @@ body {
     min-height: 80px;
     max-height: 120px;
   }
-  .steps { gap: 3vw; margin: 4vw auto 0 auto; }
+  .steps { gap: 3.6vw; margin: 5vw auto 0 auto; }
   .step-btn {
     font-size: clamp(0.95rem, 4.4vw, 1.15rem);
-    padding: clamp(14px, 4.6vw, 22px) 0;
+    padding: clamp(16px, 5vw, 24px) 0;
   }
   .equation-anim {
     font-size: clamp(1rem, 5vw, 1.7rem);
-    margin-top: 3vw;
+    margin-top: 3.6vw;
   }
 }
+
+/* Prompt text above options */
+.prompt {
+  margin: 10px auto 0 auto;
+  font-weight: bold;
+  color: #4a6c3b;
+  letter-spacing: 0.4px;
+}
+
+.skip-btn {
+  margin: 4px auto 12px auto;
+  display: inline-block;
+}
+
+/* Floating language toggle */
+.lang-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+  background: #fff;
+  color: #4a6c3b;
+  border: 2px solid #c6e6b3;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  transition: transform 160ms var(--ease-standard), background 160ms var(--ease-standard);
+}
+.lang-btn:hover { transform: translateY(-1px); background: #eaf6e1; }
+.lang-btn:active { transform: translateY(0) scale(0.98); }
 
 /* Narrow phones: single column for clarity */
 @media (max-width: 380px) {
