@@ -111,16 +111,17 @@ body {
 .container {
   width: min(96vw, 1000px);
   margin: auto;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0 2vw 6vh;
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   align-content: start;
   position: relative;
   /* Prevent layout jump from mobile browser chrome */
-  height: 100dvh;
-  max-height: 100dvh;
+  min-height: 100svh;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Screen transitions (GPU-accelerated) */
@@ -130,6 +131,7 @@ body {
   transition: opacity 420ms var(--ease-standard), transform 420ms var(--ease-standard);
   will-change: opacity, transform;
   width: 100%;
+  min-height: calc(100svh - 0px);
 }
 .screen.is-active {
   opacity: 1;
@@ -139,6 +141,10 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+/* Ensure inactive screens are completely removed from layout to avoid overlap flicker */
+.screen[hidden] {
+  display: none !important;
 }
 
 /* Green top arc */
@@ -254,7 +260,7 @@ body {
   background-color: #f9f6ec;
   background-image: radial-gradient(circle at 20px 20px, rgba(0,0,0,0.05) 18%, transparent 18%);
   background-size: clamp(24px, 8vw, 64px) clamp(24px, 8vw, 64px);
-  padding: clamp(20px, 7vw, 48px) clamp(16px, 4vw, 28px);
+  padding: clamp(16px, 5.5vw, 40px) clamp(12px, 3.2vw, 24px);
 }
 
 /* Step buttons */
@@ -264,7 +270,7 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 4vw, 28px);
   max-width: min(92vw, 520px);
-  margin: 5vw auto 0 auto;
+  margin: 4vw auto 0 auto;
 }
 .steps .step-btn {
   opacity: 0;

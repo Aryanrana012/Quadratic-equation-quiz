@@ -712,9 +712,15 @@ function shuffleArray(array) {
 
 function activateScreen(screenId) {
   const screens = document.querySelectorAll('.screen');
-  screens.forEach(s => s.classList.remove('is-active'));
+  screens.forEach(s => {
+    s.classList.remove('is-active');
+    s.setAttribute('hidden', '');
+  });
   const target = document.getElementById(screenId);
-  if (target) target.classList.add('is-active');
+  if (target) {
+    target.classList.add('is-active');
+    target.removeAttribute('hidden');
+  }
 }
 
 function showQuestionSelect() {
